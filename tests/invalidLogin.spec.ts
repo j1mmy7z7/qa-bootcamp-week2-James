@@ -8,6 +8,6 @@ test('test for invalid login', async ({ page }) => {
   await page.getByRole('textbox', {name: 'password'}).fill('password')
   await page.getByRole('button', { name: 'login' }).click()
 
-  await expect(page.getByText('wrong email or password')).toBeVisible();
+  await expect(page.getByText('invalid email or password')).toBeVisible();
 
 })
