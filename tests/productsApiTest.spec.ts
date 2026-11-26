@@ -23,6 +23,7 @@ test('create cart, add product and check status code', async () => {
     const homePage = await apiContext.get('/products')
     expect(homePage.status()).toBe(200)
 
+    // select the first product from the page json
     const products = await homePage.json()
     expect(products.data.length).toBeGreaterThan(0)
     const productId = products.data[0].id
@@ -66,7 +67,7 @@ test('create cart, add product and check status code', async () => {
 })
 
 
-test('send request to non-existant carts', async () => {
+test('send request to non-existent carts', async () => {
   let randomCartId: string = 'aksjhfkjahfdkjahfdlkahfdklas'
   const quantity = 3
 
@@ -74,12 +75,13 @@ test('send request to non-existant carts', async () => {
   const homePage = await apiContext.get('/products')
   expect(homePage.status()).toBe(200)
 
+  // get the product id
   const products = await homePage.json()
   expect(products.data.length).toBeGreaterThan(0)
   const productId = products.data[0].id
 
 
-  // enter product for non-existant cart -- first request
+  // enter product for non-existent cart -- first request
   const addProductResponse = await apiContext.post(`/carts/${randomCartId}`, {
     data: {
       "product_id": productId,
@@ -89,7 +91,7 @@ test('send request to non-existant carts', async () => {
   expect(addProductResponse.status()).toBe(404)
 
 
-  // send delete request for non-existant cart -- second request
+  // send delete request for non-existent cart -- second request
   const deleteCart = await apiContext.delete(`/carts/${randomCartId}`)
   expect(deleteCart.status()).toBe(404)
 })
