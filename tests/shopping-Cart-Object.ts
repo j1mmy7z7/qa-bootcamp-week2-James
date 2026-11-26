@@ -7,6 +7,7 @@ export class ShoppingCartActions {
   readonly addToCart: Locator;
   readonly cartPage: Locator;
   readonly removeItemButton: Locator;
+  readonly cartRow: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -14,6 +15,7 @@ export class ShoppingCartActions {
     this.cartPage = page.getByRole('link', { name: 'Cart', exact: true  });
     this.addToCart = page.getByRole('link', { name: 'Add to cart' });
     this.removeItemButton = page.getByRole('link', { name: 'Delete' });
+    this.cartRow = page.getByRole('cell', { name: 'Samsung galaxy s6' });
   }
 
   async goto() {
