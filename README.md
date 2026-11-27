@@ -95,13 +95,9 @@ and then to access you trace report of your test just run
 ```bash
 npx playwright show-trace test-results/{name-of-test}-{browser}/trace.zip
 ```
-here with name of test being the name description when you write you tests i.e
-
-test('search for pliers', async ({ page }) => {}
-and the browser being the browser playwright installed, for our case chromium
-hence you get a command like this
+Just check the test results dir for the directory containing your test name and inside we get a test trace.
 ```bash
-npx playwright show-trace test-results/search-search-for-pliers-chromium/trace.zip
+npx playwright show-trace test-results/{filename-of-your-run-test}/trace.zip
 ```
 
 Optional Cucumber file left for now
