@@ -9,10 +9,10 @@ test('add and remove an item to the Cart', async ({ page }) => {
   await shoppingAction.addProductTocart()
   await shoppingAction.moveToCartPage()
   // test to see if the product is on the page
-  await expect(page.getByRole('cell', { name: 'Samsung galaxy s6' })).toBeVisible()
+  await expect(shoppingAction.cartRow).toBeVisible();
 
   await shoppingAction.removeFromCart()
 
   //test to see if the itme is removed form the page
-  await expect(page.getByRole('cell', {name : 'Samsung galaxy s6'})).not.toBeVisible()
+   await expect(shoppingAction.cartRow).not.toBeVisible();
 })

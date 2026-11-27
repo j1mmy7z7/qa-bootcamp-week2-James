@@ -62,10 +62,46 @@ Run these steps in order from a terminal.
 
 | Folder     | What it is for |
 |------------|----------------|
-| `tests/`   | Your Playwright tests. It is empty for now; you will add tests during the week. |
+| `tests/`   | Your Playwright tests |
 | `scripts/` | Helper scripts. `check.ts` checks your setup and is run by `npm run check`. |
+| `test-results/` | not present but generated when you run tests, it stores your traces and error.md files | 
 
 ## Scripts
 
 - `npm run check`: checks your `.env` and that you can reach the Toolshop API.
 - `npm test`: runs the Playwright tests in `tests/`.
+
+
+## Running the Tests
+- To run test that are in the test directory either run
+```bash
+npx playwright test
+```
+or you can run 
+```bash
+npm test
+```
+
+- for testing individual tests that end with .spec.ts files just run 
+```bash
+npx playwright test {filename}.spec.ts
+```
+
+- for running test (just one test ) with tracing you can run this command
+```bash
+npx playwright test {filename}.spec.ts --trace on
+```
+and then to access you trace report of your test just run
+```bash
+npx playwright show-trace test-results/{name-of-test}-{browser}/trace.zip
+```
+here with name of test being the name description when you write you tests i.e
+
+test('search for pliers', async ({ page }) => {}
+and the browser being the browser playwright installed, for our case chromium
+hence you get a command like this
+```bash
+npx playwright show-trace test-results/search-search-for-pliers-chromium/trace.zip
+```
+
+Optional Cucumber file left for now

@@ -1,7 +1,7 @@
 type UserProfile = {
   id: number,
   username: string,
-  settings?: { notifications: boolean}
+  settings?: { notifications?: boolean}
 }
 
 let user_one: UserProfile = {
@@ -23,14 +23,10 @@ let user_three: UserProfile = {
   settings: {notifications: false}
 }
 
-function isNotifed(user: UserProfile): boolean {
-  if (user.settings) {
-    return user.settings.notifications
-    }
-  return false
+function isNotified(user: UserProfile): boolean {
+  return user.settings?.notifications ?? false
 }
 
-
-console.log(isNotifed(user_one))
-console.log(isNotifed(user_two))
-console.log(isNotifed(user_three))
+console.log(isNotified(user_one))
+console.log(isNotified(user_two))
+console.log(isNotified(user_three))
